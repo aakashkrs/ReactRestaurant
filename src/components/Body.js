@@ -1,15 +1,21 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../Utils/MoakData";
 
+
+
+let ListOfRestaurant=resList;
 const Body=()=>{
     return(
         <div className="body">
-            <div className="search">
-                <input type="text" placeholder="Search"></input>
+            <div className="filter">
+                <button className="filter-btn" onClick={()=>{
+                  ListOfRestaurant = ListOfRestaurant.filter((res)=> res.info.avgRating>=4.5)
+                  console.log(ListOfRestaurant);
+                }}>Top Rated Restaurant</button>
             </div>
             <div className="res-container">
               {
-                resList.map((Restaurant)=>{
+                ListOfRestaurant.map((Restaurant)=>{
                   return <RestaurantCard key={Restaurant.info.id} resData={Restaurant}/>
                 })
               }
