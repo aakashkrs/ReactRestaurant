@@ -1,16 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../Utils/MoakData";
+import { useState } from "react";
 
 
-
-let ListOfRestaurant=resList;
 const Body=()=>{
+  const [ListOfRestaurant, setListOfRestaurant]=useState(resList);
     return(
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={()=>{
-                  ListOfRestaurant = ListOfRestaurant.filter((res)=> res.info.avgRating>=4.5)
-                  console.log(ListOfRestaurant);
+                  let filteredList = ListOfRestaurant.filter((res)=> res.info.avgRating>=4.5)
+                  setListOfRestaurant(filteredList);
                 }}>Top Rated Restaurant</button>
             </div>
             <div className="res-container">
